@@ -1,10 +1,17 @@
-@extends('products.layout')
-@section('content')
-
-    <h1 class="text-center mt-3">Inventory</h1>
-    <hr>
-  <div class="container">
-      <a class="btn btn-primary mb-3" href="{{ route('products.create') }}">Add Product</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Listado</title>
+</head>
+<body>
+    <div class="row mb-2">
+        <h1>LISTADO DE Productos</h1>
+        <img class="float-right" width="115px" src="{{ asset('images/tres.png')}}" alt="">
+    </div>
     <table class="table">
             <thead class="thead-dark">
               <tr>
@@ -19,8 +26,6 @@
                 <th scope="col">Number</th>
                 <th scope="col">Exit Date</th>
                 <th scope="col">Place It When To</th>
-                
-                <th class="text-center" colspan="2" scope="col">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -37,15 +42,9 @@
                 <td>{{ $product->date_out }}</td>
                 <td>{{ $product->person }}</td>
                 <td>{{ $product->place }}</td>
-                <td><a class="btn btn-info " href="{{ route( 'products.edit',$product->id) }}"><i class="far fa-edit"></i></a> </td>
-                <td>
-                  <a class="btn btn-danger" data-toggle="modal" data-target="#confirmarBorrar-{{ $product->id }}" ><i class="fas fa-trash-alt"></i></a>
-              </tr>
-              <tr>
-                @include('products.confirmarBorrar')
-                  @endforeach
-            </tbody>
-          </table>
-        {{ $products->links() }} 
-        </div>
-@endsection
+      @endforeach
+    </tbody>
+  </table>
+</body>
+
+</html>

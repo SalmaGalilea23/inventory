@@ -14,7 +14,7 @@
  <div class="container-fluid">
   <div class="row-center">
    <div class="col-md-6 col-sm-6 col-xs-12">
-        <form action="{{ route('products.update',$products->id) }}" method="post">
+        <form action="{{ route('products.update',$product->id) }}" method="post">
                 @csrf
                 @method('PUT')
 

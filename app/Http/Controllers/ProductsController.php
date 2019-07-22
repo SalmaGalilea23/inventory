@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\products; 
+use Barryvdh\DomPDF\Facade as PDF;
 class ProductsController extends Controller
 {
     /**
@@ -59,7 +60,9 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $products = Products::all();
+        $pdf = PDF::loadview('products.mostrar', compact('products'));
+        return $pdf->stream();
     }
 
     /**
@@ -70,8 +73,8 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        
-        return view('products.edit',compact('products'));
+        $products=product::find($id);
+        return view('products.edit',compact('product'));
     }
 
     /**
@@ -107,6 +110,7 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Products::find($id)->delete();
+        return redirect()->route('products.index')->with('success','El producto fue Eliminado correctamente');
     }
 }

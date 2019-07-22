@@ -15,3 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('products','ProductsController');
+Route::get('products.show','ProductsController@show');
